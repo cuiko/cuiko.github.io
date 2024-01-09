@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- Chrome, Firefox OS and Opera Status Bar Color -->
+<meta name="theme-color" content="#FFFFFF">
+<!-- Google Search -->
+<meta name="google-site-verification" content="6jV_H8GElxKqIdeprDJO3PgOlROLEjpEnFJtmEBeqtg" />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
+<link rel="stylesheet" type="text/css"
+  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css">
+<link rel="stylesheet" type="text/css" href="css/SourceSansPro.css">
+<link rel="stylesheet" type="text/css" href="css/theme.css">
+<link rel="stylesheet" type="text/css" href="css/notablog.css">
+<!-- Favicon -->
+
+  <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;📖&lt;/text&gt;&lt;/svg&gt;">
+
+<style>
+  :root {
+    font-size: 20px;
+  }
+</style>
+
+  <title>Goland 通过 dlv 调试远程 k8s 应用&nbsp;|&nbsp;cuiko’s blog</title>
+  <meta property="og:type" content="blog">
+  <meta property="og:title" content="Goland 通过 dlv 调试远程 k8s 应用">
+  
+    <meta name="description" content="本地通过代理转发流量到跳板机达到调试目的。">
+    <meta property="og:description" content="本地通过代理转发流量到跳板机达到调试目的。">
+  
+  
+    <meta property="og:image" content="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;☁️&lt;/text&gt;&lt;/svg&gt;">
+  
+  <style>
+    .DateTagBar {
+      margin-top: 1.0rem;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="Navbar">
+  <a href="index.html">
+    <div class="Navbar__Btn">
+      
+        <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;📖&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+      
+      <span>Home</span>
+    </div>
+  </a>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="about.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;💬&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>About</span>
+        </div>
+      </a>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</nav>
+  <header class="Header">
+    
+    <div class="Header__Spacer Header__Spacer--NoCover">
+    </div>
+    
+      <div class="Header__Icon">
+        <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;☁️&lt;/text&gt;&lt;/svg&gt;"></span>
+      </div>
+    
+    <h1 class="Header__Title">Goland 通过 dlv 调试远程 k8s 应用</h1>
+    
+      <div class="DateTagBar">
+        
+          <span class="DateTagBar__Item DateTagBar__Date">Posted on Sat, Jan 6, 2024</span>
+        
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--red">
+            <a href="tag/Go.html">Go</a>
+          </span>
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--gray">
+            <a href="tag/Tutorial.html">Tutorial</a>
+          </span>
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--brown">
+            <a href="tag/IDE.html">IDE</a>
+          </span>
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--orange">
+            <a href="tag/Command.html">Command</a>
+          </span>
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--yellow">
+            <a href="tag/K8s.html">K8s</a>
+          </span>
+        
+      </div>
+    
+  </header>
+  <article id="https://www.notion.so/075943d4660e44bc94b8547b79fb6e36" class="PageRoot"><ol class="NumberedListWrapper"><li id="https://www.notion.so/9d751b00ecb548bea6161102c1fc527e" class="NumberedList" value="1"><span class="SemanticStringArray"><span class="SemanticString">设置本地代理转发</span></span><pre id="https://www.notion.so/316ecc2388f349cdafe9474f5f7d28bb" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span># ~/.ssh/config
+Host remote
+	ProxyCommand nc -x localhost:&lt;proxy-port&gt; %h %p
+
+Host remote
+	HostName &lt;server-address&gt;
+	User &lt;user&gt;
+	# 第一个 2345 是本地端口, 第二个 2345 是远程端口
+	LocalForward 2345 localhost:2345</span></span></span></code></pre></li><li id="https://www.notion.so/06effd0749c3454780fc2ae8f5b85076" class="NumberedList" value="2"><span class="SemanticStringArray"><span class="SemanticString">连接远程服务器, 并设置端口转发</span></span><pre id="https://www.notion.so/7d6e9082334141bfbdfdedd5ea53bdfa" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span># local-port: 远程主机的本地端口
+# pod-port: pod 内容器的接口
+kubectl port-forward -n &lt;namespace&gt; &lt;pod&gt; &lt;local-port&gt;:&lt;pod-port&gt;</span></span></span></code></pre></li><li id="https://www.notion.so/ac535b5f3ea34bc0a40b54fb20f0d8bc" class="NumberedList" value="3"><span class="SemanticStringArray"><span class="SemanticString">设置 </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">goland</code></span></span></li></ol><ul class="BulletedListWrapper"><li id="https://www.notion.so/6cde30e3eeaa458fbd657ed74a2c2631" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">goland</code></span><span class="SemanticString"> 的 </span><span class="SemanticString"><em class="SemanticString__Fragment SemanticString__Fragment--Italic">Debug Configurations</em></span><span class="SemanticString"> 添加 </span><span class="SemanticString"><em class="SemanticString__Fragment SemanticString__Fragment--Italic">Go Remote</em></span><span class="SemanticString">, </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">Host</code></span><span class="SemanticString"> 设置为 </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">localhost</code></span><span class="SemanticString">, </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">Port</code></span><span class="SemanticString"> 设置为 </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">2345</code></span></span></li><li id="https://www.notion.so/e7d136d3e23c48029a51d925eb0c7e89" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">编译携带 </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">gcflags</code></span></span><pre id="https://www.notion.so/95a04f00e8554d51b7076f0dd6d151fb" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span>go build -gcflags &quot;all=-N -l&quot; main.go</span></span></span></code></pre></li></ul><ol class="NumberedListWrapper"><li id="https://www.notion.so/f5298b10268c451295fa614b317877b4" class="NumberedList" value="1"><span class="SemanticStringArray"><span class="SemanticString">运行 </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">dlv</code></span></span><pre id="https://www.notion.so/ac5efa54a4894b61a48cc0780989429e" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span>dlv attach &lt;pid&gt; --headless --api-version=2 --listen=:&lt;local&gt;</span></span></span></code></pre></li><li id="https://www.notion.so/8027c5d45cb346118be6922a2c34706c" class="NumberedList" value="2"><span class="SemanticStringArray"><span class="SemanticString">测试</span></span><ol class="NumberedListWrapper"><li id="https://www.notion.so/d5b82d7e652d4b888c3be02434456688" class="NumberedList" value="1"><span class="SemanticStringArray"><span class="SemanticString">请求测试接口</span></span></li></ol><pre id="https://www.notion.so/19044ca851e54fc9b5c5882d3e8c8fcc" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span>curl -v http://&lt;your-app-http-api&gt;?key=123</span></span></span></code></pre></li></ol></article>
+  <script src="https://utteranc.es/client.js"
+        repo="cuiko/cuiko.github.io"
+        issue-term="og:title"
+        label="comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+  <footer class="Footer">
+  <div>&copy; cuiko’s blog 2023-2024</div>
+  <div>&centerdot;</div>
+  <div>Powered by <a href="https://github.com/dragonman225/notablog" target="_blank"
+      rel="noopener noreferrer">Notablog</a>.
+  </div>
+</footer>
+
+</body>
+
+</html>

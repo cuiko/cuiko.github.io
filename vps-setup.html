@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- Chrome, Firefox OS and Opera Status Bar Color -->
+<meta name="theme-color" content="#FFFFFF">
+<!-- Google Search -->
+<meta name="google-site-verification" content="6jV_H8GElxKqIdeprDJO3PgOlROLEjpEnFJtmEBeqtg" />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
+<link rel="stylesheet" type="text/css"
+  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css">
+<link rel="stylesheet" type="text/css" href="css/SourceSansPro.css">
+<link rel="stylesheet" type="text/css" href="css/theme.css">
+<link rel="stylesheet" type="text/css" href="css/notablog.css">
+<!-- Favicon -->
+
+  <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;📖&lt;/text&gt;&lt;/svg&gt;">
+
+<style>
+  :root {
+    font-size: 20px;
+  }
+</style>
+
+  <title>快速配置 vps 基本环境&nbsp;|&nbsp;cuiko’s blog</title>
+  <meta property="og:type" content="blog">
+  <meta property="og:title" content="快速配置 vps 基本环境">
+  
+    <meta name="description" content="通过 dotfiles 配置 zsh、rust、lua、tmux、nvim(lazyvim)">
+    <meta property="og:description" content="通过 dotfiles 配置 zsh、rust、lua、tmux、nvim(lazyvim)">
+  
+  
+    <meta property="og:image" content="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;🚀&lt;/text&gt;&lt;/svg&gt;">
+  
+  <style>
+    .DateTagBar {
+      margin-top: 1.0rem;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="Navbar">
+  <a href="index.html">
+    <div class="Navbar__Btn">
+      
+        <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;📖&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+      
+      <span>Home</span>
+    </div>
+  </a>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="about.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;💬&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>About</span>
+        </div>
+      </a>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</nav>
+  <header class="Header">
+    
+    <div class="Header__Spacer Header__Spacer--NoCover">
+    </div>
+    
+      <div class="Header__Icon">
+        <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;🚀&lt;/text&gt;&lt;/svg&gt;"></span>
+      </div>
+    
+    <h1 class="Header__Title">快速配置 vps 基本环境</h1>
+    
+      <div class="DateTagBar">
+        
+          <span class="DateTagBar__Item DateTagBar__Date">Posted on Mon, Jan 8, 2024</span>
+        
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--gray">
+            <a href="tag/Tutorial.html">Tutorial</a>
+          </span>
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--orange">
+            <a href="tag/Command.html">Command</a>
+          </span>
+        
+      </div>
+    
+  </header>
+  <article id="https://www.notion.so/055ec24af7894c7cbb3209fd80e9ab5d" class="PageRoot"><h2 id="https://www.notion.so/47e370d248624ffa841470dea7129e49" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--2"><a class="Anchor" href="#https://www.notion.so/47e370d248624ffa841470dea7129e49"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">1. 创建用户</span></span></h2><pre id="https://www.notion.so/6e628841674f4d739ebf384e72c5e893" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span># Ubuntu 20.04
+# 通过 ssh 连接到 vps
+ssh root@&lt;ip&gt; -p &lt;port&gt;
+# 创建个人用户
+adduser
+# 分配 sudo 权限
+usermod -aG sudo &lt;username&gt;
+# 修改 ssh 配置
+sudo vim /etc/ssh/sshd_config
+# 在最后一行添加
+# 禁止 root 用户通过 ssh 登陆
+PermitRootLogin no
+# 修改远程端口(大于 1024 小于 65535)
+Port 12345
+# 保存并退出
+:wq !sudo tee %
+# 重启 ssh 服务
+sudo systemctl restart ssh
+# TODO: 只允许使用 RSA 登陆，禁用密码登陆</span></span></span></code></pre><h2 id="https://www.notion.so/2582094661d34ac8860473f858126409" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--2"><a class="Anchor" href="#https://www.notion.so/2582094661d34ac8860473f858126409"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">2. 配置 dotfiles</span></span></h2><pre id="https://www.notion.so/4b6a8913b7c34fc7b8e89eb904caf1f6" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span># 拉取 dotfiles
+git clone https://github.com/imzhongqi/dotfiles ～/.ditfiles
+# 安装 stow
+sudo apt install stow
+# 初始化 submodule
+cd ~/.ditfiles
+git submodule init
+# 删除 .git
+rm -rf .git</span></span></span></code></pre><h2 id="https://www.notion.so/78b51d0f6d604eb2979a2bd8b5a0a700" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--2"><a class="Anchor" href="#https://www.notion.so/78b51d0f6d604eb2979a2bd8b5a0a700"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">3. 安装常用命令</span></span></h2><pre id="https://www.notion.so/9855e3164230439d8ab55abab1d05f1c" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span># 安装 zsh
+sudo apt install zsh
+# 设置默认 shell 为 zsh
+chsh -s $(which zsh)
+# 启用 zsh 配置
+cd ~/.ditfiles
+stow zsh
+# 进入配置好的 zsh
+zsh
+# 安装 rust(部分命令需要用到)
+curl --proto &#x27;=https&#x27; --tlsv1.2 -sSf https://sh.rustup.rs | sh
+# 添加 cargo/bin 目标到 $PATH
+pathctl put ~/.cargo/bin
+# 安装 exa
+cargo install exa
+# 安装 fd
+cargo install fd-find
+# 安装 rg
+cargo install ripgrep
+# 安装 lua 5.3(Ubuntu 20.04 只能安装到 5.3)
+sudo apt install lua5.3
+# 安装 fzf
+wget https://github.com/junegunn/fzf/releases/download/0.45.0/fzf-0.45.0-linux_amd64.tar.gz
+x fzf-0.45.0-linux_amd64.tar.gz
+sudo install fzf /usr/local/bin
+# 安装 tmux
+wget https://github.com/tmux/tmux/releases/download/3.3a/tmux-3.3a.tar.gz
+x tmux-3.3a.tar.gz
+# 安装 tmux 编译依赖
+sudo apt install libevent-dev ncurses-dev
+# 编译 tmux
+cd tmux-3.3a
+./configura &amp;&amp; make
+sudo install tmux /usr/local/bin
+# 安装 tmux 插件
+# 进入 tmux 后按 ctrl+z+I
+# 安装 lazygit
+LAZYGIT_VERSION=$(curl -s &quot;https://api.github.com/repos/jesseduffield/lazygit/releases/latest&quot; | grep -Po &#x27;&quot;tag_name&quot;: &quot;v\K[^&quot;]*&#x27;)
+curl -Lo lazygit.tar.gz &quot;https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz&quot;
+tar xf lazygit.tar.gz lazygit
+sudo install lazygit /usr/local/bin
+# 安装 nvim
+wget https://github.com/neovim/neovim/releases/download/v0.9.5/nvim-linux64.tar.gz
+x nvim-linux64.tar.gz
+mv nvim-linux64 nvim
+sudo install nvim /usr/local/share
+# 添加 nvim 到 $PATH
+pathctl put /usr/local/share/nvim/bin</span></span></span></code></pre><div id="https://www.notion.so/11a4cb79b9d84cf89ef50b5f28d28b76" class="Divider"></div><h2 id="https://www.notion.so/3279082fc7cc43e1bfcb315e005c2f6e" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--2"><a class="Anchor" href="#https://www.notion.so/3279082fc7cc43e1bfcb315e005c2f6e"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">参考</span></span></h2><ul class="BulletedListWrapper"><li id="https://www.notion.so/d4751918e23240979c8fbed7fcc5328d" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://github.com/imzhongqi/dotfiles">imzhongqi/dotfiles</a></span></span></li><li id="https://www.notion.so/6cac1c8d0b60486cbd6d4453464caded" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://www.lazyvim.org/#%EF%B8%8F-requirements"> [🚀 Getting Started | LazyVim]</a></span></span></li></ul></article>
+  <script src="https://utteranc.es/client.js"
+        repo="cuiko/cuiko.github.io"
+        issue-term="og:title"
+        label="comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+  <footer class="Footer">
+  <div>&copy; cuiko’s blog 2023-2024</div>
+  <div>&centerdot;</div>
+  <div>Powered by <a href="https://github.com/dragonman225/notablog" target="_blank"
+      rel="noopener noreferrer">Notablog</a>.
+  </div>
+</footer>
+
+</body>
+
+</html>
