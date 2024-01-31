@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- Chrome, Firefox OS and Opera Status Bar Color -->
+<meta name="theme-color" content="#FFFFFF">
+<!-- Google Search -->
+<meta name="google-site-verification" content="6jV_H8GElxKqIdeprDJO3PgOlROLEjpEnFJtmEBeqtg" />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
+<link rel="stylesheet" type="text/css"
+  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css">
+<link rel="stylesheet" type="text/css" href="css/SourceSansPro.css">
+<link rel="stylesheet" type="text/css" href="css/theme.css">
+<link rel="stylesheet" type="text/css" href="css/notablog.css">
+<!-- Favicon -->
+
+  <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;📖&lt;/text&gt;&lt;/svg&gt;">
+
+<style>
+  :root {
+    font-size: 20px;
+  }
+</style>
+
+  <title>Git 速查&nbsp;|&nbsp;cuiko’s blog</title>
+  <meta property="og:type" content="blog">
+  <meta property="og:title" content="Git 速查">
+  
+    <meta name="description" content="快速查看常用的 git 命令。">
+    <meta property="og:description" content="快速查看常用的 git 命令。">
+  
+  
+  <style>
+    .DateTagBar {
+      margin-top: 1.0rem;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="Navbar">
+  <a href="index.html">
+    <div class="Navbar__Btn">
+      
+        <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;📖&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+      
+      <span>Home</span>
+    </div>
+  </a>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="about.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;💬&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>About</span>
+        </div>
+      </a>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</nav>
+  <header class="Header">
+    
+    <div class="Header__Spacer Header__Spacer--NoCover">
+    </div>
+    
+    <h1 class="Header__Title">Git 速查</h1>
+    
+      <div class="DateTagBar">
+        
+          <span class="DateTagBar__Item DateTagBar__Date">Posted on Wed, Jan 31, 2024</span>
+        
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--default">
+            <a href="tag/Document.html">Document</a>
+          </span>
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--orange">
+            <a href="tag/Command.html">Command</a>
+          </span>
+        
+      </div>
+    
+  </header>
+  <article id="https://www.notion.so/9c2e4e3e8fec45ec9f040e82d8ed6feb" class="PageRoot"><h3 id="https://www.notion.so/ee7a8b322d994a4181b4a0d9b2a2f1c9" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--3"><a class="Anchor" href="#https://www.notion.so/ee7a8b322d994a4181b4a0d9b2a2f1c9"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">三种状态</span></span></h3><ul class="BulletedListWrapper"><li id="https://www.notion.so/3287a041d1c74e68b6e979a7de4f6774" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">已提交(committed)</span></span><div id="https://www.notion.so/3b5ad81636b94d3e8e76df2df69079b5" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">表示数据已经安全地保存在本地数据库.</span></span></p></div></li><li id="https://www.notion.so/425fbd8aa86e4ad48c1d5ca0950d84d4" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">已修改(modified)</span></span><div id="https://www.notion.so/0503b76e040f42958f9bda86386a061d" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">表示修改了文件, 但还没保存到数据库中.</span></span></p></div></li><li id="https://www.notion.so/fe3ea7e616c8490eb0d76a49fa0e7465" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">已暂存(staged)</span></span><div id="https://www.notion.so/dc97a8ddb5314e6ab73e16ed7ff343f7" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">表示对一个已修改文件的当前版本做了标记, 使之包含在下次提交的快照中.</span></span></p></div></li></ul><h3 id="https://www.notion.so/2d446d3343bd4f31ae804f11c0d81b09" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--3"><a class="Anchor" href="#https://www.notion.so/2d446d3343bd4f31ae804f11c0d81b09"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">三个阶段</span></span></h3><ul class="BulletedListWrapper"><li id="https://www.notion.so/8c8108c10fa44da59bc67ef6ca9338dc" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">工作区</span></span><div id="https://www.notion.so/314244ee291b427c995d16ff92eb97a1" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">工作区是对项目的某个版本独立提取出来的内容.</span></span></p></div></li><li id="https://www.notion.so/ed19779356cf4693a4c3ba5600b6d407" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">暂存区</span></span><div id="https://www.notion.so/8348b777327d4f0bb2b652a88fba12e4" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">暂存区是一个文件, 保存了下次将要提交的文件列表信息.</span></span></p></div></li><li id="https://www.notion.so/689b62576d804432ad29780b9bfa1069" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">Git 目录(仓库)</span></span><div id="https://www.notion.so/48541105c5064ec4a08a7aa1d0dd2479" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Git 仓库目录是 Git 用来保存项目的原数据和对象数据库的地方.</span></span></p></div></li></ul><h3 id="https://www.notion.so/0edbf211bf88494b89ba2d17a67fffa4" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--3"><a class="Anchor" href="#https://www.notion.so/0edbf211bf88494b89ba2d17a67fffa4"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">基本的 Git 工作流程</span></span></h3><ul class="BulletedListWrapper"><li id="https://www.notion.so/6f7c8045f59242fbaa1057f5840ecffd" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">在工作区修改文件.</span></span></li><li id="https://www.notion.so/07fc99b79d644d84b5e84cca1f3b9287" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">将下次想要提交的更改选择性地暂存, 这样只会将更改的部分添加到暂存区.</span></span></li><li id="https://www.notion.so/d8cb36ccd270447a9b30b2d6fce9ecb9" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">提交更新, 找到暂存区的文件, 将快照永久性存储到 Git 目录.</span></span></li></ul><div id="https://www.notion.so/849f48fce0b04c908225d53a91e42c2b" class="Divider"></div><h3 id="https://www.notion.so/eade0b5207c74002ab58f6d2ac170778" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--3"><a class="Anchor" href="#https://www.notion.so/eade0b5207c74002ab58f6d2ac170778"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">命令速查</span></span></h3><ul class="BulletedListWrapper"><li id="https://www.notion.so/4df7d92fae194fe9ad2791e84425a934" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">初次运行 Git 前的配置</span></span></li><li id="https://www.notion.so/22955012935e4dcaa7cf8918d70c0909" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">1.配置系统变量</span></span><pre id="https://www.notion.so/786e06789a834b9da93d334323602194" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span># 查看所有配置及其所在的文件
+git config --list --show-origin &lt;key&gt;
+# 配置每个用户的仓库配置
+git config --system
+# 配置当前用户
+git config --golbal
+# 配置当前项目
+git config --local</span></span></span></code></pre></li><li id="https://www.notion.so/4972e493138e47808299481b36ebcf53" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">2. 配置用户信息</span></span><pre id="https://www.notion.so/249c543fd64f42b2b2b75d41ff1ce562" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span># 设置提交时显示的作者名
+git config --global user.name &quot;foo&quot;
+# 设置提交时显示的邮箱
+git config --global user.email &quot;baz@bar.com&quot;</span></span></span></code></pre></li><li id="https://www.notion.so/fe72bc4796bc461f89c7409e49f3c62f" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">3. 文本编辑器</span></span><pre id="https://www.notion.so/fff95523e4b84103ace57fb7e2d64d40" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span>git config --global core.editor vim</span></span></span></code></pre></li><li id="https://www.notion.so/a86a6ed714a14216939f0e6526f24752" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">4. 其他</span></span><pre id="https://www.notion.so/8c173d61bfe44760b30c189625cfa182" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span># 检查配置信息
+git config --list
+# 检查具体的某项配置
+git config user.name
+# 获取帮助
+git help &lt;verb&gt;
+git &lt;verb&gt; --help
+man git-&lt;verb&gt;</span></span></span></code></pre></li><li id="https://www.notion.so/192f255373504cf9926455b5228f8a52" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">获取 Git 仓库</span></span><ul class="BulletedListWrapper"><li id="https://www.notion.so/4e76d4da7e25473cb89222dda224d992" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">将尚未进行版本控制的本地目录转换为 Git 仓库.</span></span><pre id="https://www.notion.so/d3bd86b851814100bf2969856dec61dc" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span>git init
+git init -bare</span></span></span></code></pre></li><li id="https://www.notion.so/30c73f279b0f4b77bb2226388b61a255" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">从其他服务器克隆一个已存在的 Git 仓库.</span></span><pre id="https://www.notion.so/cd3ef79622a045d4883dc07b925b2668" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span>git clone https://github.com/author/project</span></span></span></code></pre><details id="https://www.notion.so/f201d9e1858145c484b48c4202e1299b" class="ColorfulBlock ColorfulBlock--ColorDefault Toggle "><summary class="Toggle__Summary"><span class="SemanticStringArray"><span class="SemanticString">文件状态</span></span></summary><div class="Toggle__Content"><ul class="BulletedListWrapper"><li id="https://www.notion.so/6545d4782b7c4027863848fcd46e3544" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">已跟踪</span></span><div id="https://www.notion.so/24cd2d67200442afaf397f381d1345fe" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">指被纳入了版本控制的文件.</span></span></p></div></li><li id="https://www.notion.so/39fba9f152154a30b686fef24b9a778d" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">未跟踪</span></span><div id="https://www.notion.so/7977214ff16c4cc0bf278b6df75db495" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Git 在之前的快照(提交)中没有这些文件.</span></span></p></div></li></ul></div></details><pre id="https://www.notion.so/4876a0e2db944fca9ed45c16107eb73b" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span># 检查当前文件状态
+git status
+# 紧凑模式
+git status -s
+# Untracked files 未追踪
+# Changes to be committed 已暂存
+# Changes not staged for commit 已追踪的文件内容发生了变化(工作区)
+# 但还没有放到暂存区, 通过 git add 添加到暂存区
+
+# 跟踪新文件/添加至暂存区
+git add README.md</span></span></span></code></pre></li></ul></li><li id="https://www.notion.so/aa679890878c45128fa6cc92666fa726" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">查看已暂存和未暂存的修改</span></span><pre id="https://www.notion.so/522dbedaff1544cd91a94889c427e446" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span># 查看工作区当前文件和暂存区之间的差异
+git diff
+# 查看已暂存的文件和最后一次提交之间的差异
+git diff --cached
+# 仅显示变化的文件
+git diff --stat</span></span></span></code></pre></li><li id="https://www.notion.so/0ebb2e6c526f44d9a4b01c250476fc2e" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">提交</span></span><pre id="https://www.notion.so/ac880aae6cd949ef968e1e61df7a74cb" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span># 提交
+git commit
+# 提交(单行描述)
+git commit -m &quot;baz&quot;
+# 将已追踪的文件暂存起来一并提交 (git add)
+git commit -a
+# 修改上一次提交的描述/提交不保留上一次提交记录
+git commit --amend
+# 重置上一次提交的作者
+git commit --amend --reset-author
+# 修改上一次提交的作者
+git commit --amend --author=&quot;baz&quot;
+# 修改上一次提交的时间
+git commit --amend --date=&quot;baz&quot;
+# 合并多次提交
+# git log
+# commit1 A.1 --|
+# commit2 A.2 --|
+# commit3 A.3 --|--&gt; 合并这 4 个 commit
+# commit4 A.4 --|
+# commit5 B.1
+git rebase -i commit5 # 需要当前 HEAD 合并到的 commit hash 的前一条 commit hash
+git rebase -i HEAD~4 # 合并最近 4 条提交
+git merge --squash &lt;branch&gt; # 从把其他分支的多条提交压缩成一条
+# Commands:
+# p, pick &lt;commit&gt; = use commit
+# r, reword &lt;commit&gt; = use commit, but edit the commit message
+# e, edit &lt;commit&gt; = use commit, but stop for amending
+# s, squash &lt;commit&gt; = use commit, but meld into previous commit
+# f, fixup &lt;commit&gt; = like &quot;squash&quot;, but discard this commit&#x27;s log message
+# x, exec &lt;command&gt; = run command (the rest of the line) using shell
+# b, break = stop here (continue rebase later with &#x27;git rebase --continue&#x27;)</span></span></span></code></pre></li><li id="https://www.notion.so/0b1e6244907e42e8886ebd8f90f24162" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">移除文件</span></span><div id="https://www.notion.so/41cc099f583c4ee59f027e13503c3d7d" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">如果直接从工作区删除文件, 运行 </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">git status</code></span><span class="SemanticString"> 后, 文件会显示在 changes note staged for commit(未暂存) 部分.</span></span></p></div><div id="https://www.notion.so/c079cfc8b6bb48a6a0842a8552c7ce76" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">运行 </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">git rm</code></span><span class="SemanticString"> 可以记录此次移除文件的操作(changes to be commited).</span></span></p></div><pre id="https://www.notion.so/ff4896e3862045ac9c91a162fbe40f8c" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span>git rm README.md
+git rm -f README.md # 删除文件前已缓存或者修改过则必须使用强制删除选项 -f
+git rm --cached README.md # 从 git 仓库中删除(不删除本地文件)</span></span></span></code></pre></li><li id="https://www.notion.so/71249035029b44d0ad6b2153025d77fd" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">移动文件</span></span><pre id="https://www.notion.so/3ebb24e42b5b4b71b2678a6f98398e08" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span>git mv readme.md README.md # 重命名</span></span></span></code></pre></li><li id="https://www.notion.so/ff36232e44424f8d8a74bb4a2b0945e5" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">查看提交日志</span></span><pre id="https://www.notion.so/f5cccb31c3f44027b614e79353ff6ea1" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span>git log -&lt;n&gt; # 查看前 n 条日志
+git log -p/--patch -1 # 查看最近一条的提交的差异
+git log --stat # 查看提交修改的文件
+
+git log --pretty=oneline # 以一行的方式显示提交描述
+git log --oneline # 简写
+git log --pretty=format:&quot;%h - %cn, %cd: %s&quot; # 以格式化的方式显示提交信息
+
+git log --since=2.weeks # 查看最近两周的所有提交
+git log --until=2.weeks # 查看两周前的所有提交
+
+git log --author=&quot;author&quot; # 查看某个作者的提交记录
+git log --committer=&quot;committer&quot; # 查看某个提交者的提交记录
+git log --grep=&quot;keyword&quot; # 搜索提交说明中的关键字
+git log -S content-keyword # 搜索提交内容中含有 keyword 的提交
+
+git show &lt;commit&gt; # 查看提交内容</span></span></span></code></pre></li><li id="https://www.notion.so/aa3a2e1f17644ce4aeeb634e5471e26e" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">撤销操作</span></span><pre id="https://www.notion.so/b5c08f63e13840e3b899208bdb0eda77" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span>git reset --hard README.md # 取消暂存 README.md 文件
+git checkout -- README.md # 将 README.md 文件恢复到上次提交的状态</span></span></span></code></pre></li><li id="https://www.notion.so/6ab23e9612d948a689dcc7a17afc4e39" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">回滚</span></span><pre id="https://www.notion.so/f299e11a7b0543938370940bd8114328" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span>git reset --hard &lt;commit0&gt; # 直接从当前提交(commit3)回滚到指定提交(commit0), 中间提交都无了(commit3/2/1)
+git revert --hard &lt;commit0&gt; # 撤销指定提交的 commit, 会把 commit0 的提交从现在的 git 流里删除, 可能需要解决冲突</span></span></span></code></pre></li><li id="https://www.notion.so/7ee78cc0c66d481ebe58bca1aa0a3743" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">远程仓库</span></span><pre id="https://www.notion.so/95cdaddffb30487ea6ea0463183f3026" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span>git clone &lt;url&gt; # 获取远程仓库
+git remote -v # 查看远程仓库简写和其对应的路径
+git remote add &lt;shortname&gt; &lt;url&gt; # 添加远程仓库
+git remote show &lt;remote&gt; # 展示仓库的相关信息(地址/当前分支/远程分支状态/本地分支)
+git fetch &lt;remote&gt; # 拉取远程更新(需要手动合并)
+git push &lt;remote&gt; &lt;branch&gt; # 推送到远程分支
+git pull &lt;origin&gt; &lt;branch&gt; # 拉取指定分支的远程引用, 并合并到本地分支
+git remote rename &lt;oldName&gt; &lt;newName&gt; # 重命名仓库简称
+git remote remove &lt;remote&gt; # 删除远程仓库</span></span></span></code></pre></li><li id="https://www.notion.so/13a22038411d4546a13d59e5dd384aee" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">标签</span></span><div id="https://www.notion.so/b16af8f848314826893246019b9c0dfa" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString"></span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">轻量标签</strong></span></span></p></div><div id="https://www.notion.so/3ec789e578c14333b7c7d4885e095269" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">相当于某个提交的应用, 只附带当前提交信息.</span></span></p></div><div id="https://www.notion.so/66ac8b628b9a475694725445129e5947" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString"></span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">附注标签</strong></span></span></p></div><div id="https://www.notion.so/3082515d454049aba62c9294e0319dc7" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">附注标签是存储在 Git 数据库中的一个完成对象, 它是可以被校验的, 其中包含打标签者的名字、电子邮件、地址、日期时间, 此外还有一个标签信息, 能够用 GPG 签名并验证.</span></span></p></div><pre id="https://www.notion.so/191b93e7ff8f4039ae32694315ce8436" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span>git tag # 展示已有标签
+git tag -l &quot;v1.1.*&quot; # 检索标签 v1.1.1, v1.1.2
+git tag -a &quot;v1.0&quot; -m &quot;this is v1.0&quot; # -a 创建一个附注标签 -m 为标签添加描述
+git show v1.4 # 查看标签信息和对应的提交信息
+git tag v1.0 # 创建一个轻量标签 不需要使用 -a、-s 或 -m 选项, 只需要提供标签名字
+git tag -a v1.2 &lt;commit-hash&gt; # 为提交补上标签
+git push &lt;remote&gt; &lt;tagname&gt; # 将标签推送到远程仓库
+git push &lt;remote&gt; --tags # 将所有不在远程仓库的标签全部推送上去
+git tag -d v1.2 # 删除本地标签
+git push origin --delete &lt;tagname&gt; # 删除远程仓库标签
+# 检出标签文件版本
+git checkout -b &lt;new-branch&gt; # 创建并切到换新分支
+git checkout -b &lt;new-branch&gt; &lt;commit/branch&gt; # 创建并切到换新分支, 同时制定开始的提交/分支
+git checkout v1.2 # 检出 v1.2 的提交
+git chekcout -b &lt;new-branch&gt; &lt;tagname/remote-branch&gt; # 创建新分支, head 为 tag/remote-branch 的 commit</span></span></span></code></pre></li><li id="https://www.notion.so/7b36a1bd80754007b6391c726b83f3a5" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">GIt 别名</span></span><pre id="https://www.notion.so/343eddf06bf74f1bb67109f3ab5a57c0" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span>git config --global alias.unstage &#x27;reset HEAD --&#x27;
+git unstage fileA # == git reset HEAD -- fileA</span></span></span></code></pre></li><li id="https://www.notion.so/f2ff8ec80ee74a3ebacd6da8ec6bb69c" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">HEAD、HEAD~、HEAD^ 说明</span></span><div id="https://www.notion.so/da938c1e3c2b4a32879f88cae6d0a30a" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString"></span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">HEAD</strong></span><span class="SemanticString">: 指向当前所在分支的最新提交</span></span></p></div><div id="https://www.notion.so/68d42110fe9846a8ae47a31fc13a8f29" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString"></span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">HEAD~{n}</strong></span><span class="SemanticString">: 指向</span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">当前路径</strong></span><span class="SemanticString">的第 n 个提交</span></span></p></div><div id="https://www.notion.so/f4709804ada742f88b492d6a7df9a130" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">HEAD = HEAD~0</span></span></p></div><div id="https://www.notion.so/17c5531aea0d44d69f172243b9a85f31" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">HEAD~ = HEAD~1</span></span></p></div><div id="https://www.notion.so/ee78eb50e5f3447185451b152e67ab4e" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">HEAD~~ = HEAD~2</span></span></p></div><div id="https://www.notion.so/4e1444e2de5640708da02a2b7906774d" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">HEAD^n: 切换</span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">父级提交路径</strong></span><span class="SemanticString">的第 n 个提交(父级本身就代表了回溯了 1 次)</span></span></p></div><pre id="https://www.notion.so/ebc71d4f4208474cad7e5cc0de890140" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span># 当前提交
+HEAD = HEAD~0 = HEAD^0
+
+# 主线回溯
+HEAD~1 = HEAD^ 主线的上一次提交
+HEAD~2 = HEAD^^ 主线的上二次提交
+HEAD~3 = HEAD^^^ 主线的上三次提交
+
+# 如果某个节点有其他分支并入
+HEAD^1 主线提交（第一个父提交）
+HEAD^2 切换到了第2个并入的分支并得到最近一次的提交
+HEAD^2~3 切换到了第2个并入的分支并得到最近第 4 次的提交
+HEAD^3~2 切换到了第3个并入的分支并得到最近第 3 次的提交
+
+# ^{n} 和 ^ 重复 n 次的区别
+HEAD~1 = HEAD^
+HEAD~2 = HEAD^^
+HEAD~3 = HEAD^^^
+# 切换父级
+HEAD^1~3 = HEAD~4
+HEAD^2~3 = HEAD^2^^^
+HEAD^3~3 = HEAD^3^^^</span></span></span></code></pre></li><li id="https://www.notion.so/bbe1bc9ad7134feab956ba657f1c1a7f" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">分支</span></span><pre id="https://www.notion.so/5baa69614a84405bb5760a3b4bf0a4f1" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span>git branch # 查看本地分支
+git branch -r # 查看远程分支
+git branch -v # 查看本地分支及其最后的提交描述
+git branch &lt;branch-name&gt; # 创建分支
+git checkout &lt;branch-name&gt; # 切换分支
+git checkout -b &lt;branch-name&gt; # 创建分支并切换
+git branch -d &lt;branch-name&gt; # 删除本地分支
+git branch -D &lt;branch-name&gt; # 强制删除本地分支(被删除分支未被合并或推送)
+git push &lt;remote&gt; --delete &lt;branch-name&gt; # 删除远程分支
+git branch --set-upstream-to &lt;remote/branch-name&gt; # 本地分支关联远程分支
+git push --set-upstream-to &lt;remote&gt; &lt;branch-name&gt; # 推送本地分支到远程
+git merge &lt;branch-name&gt; # 合并指定分支到当前当前分支
+git branch -m &lt;old-name&gt; &lt;new-name&gt; # 分支重命名</span></span></span></code></pre><div id="https://www.notion.so/24316844c193418194c86ad003470e21" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">冲突说明</span></span></p></div><pre id="https://www.notion.so/30788dd548164c17895e29fd95202b04" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:index.html
+&lt;div id=&quot;footer&quot;&gt;contact : email.support@github.com&lt;/div&gt;
+=======
+&lt;div id=&quot;footer&quot;&gt;
+please contact us at support@github.com
+&lt;/div&gt;
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; iss53:index.html</span></span></span></code></pre><div id="https://www.notion.so/e598b77513b3404aa63b96873d4dabcb" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">=== 上半部分表示 HEAD 所指示的版本(当前分支).</span></span></p></div><div id="https://www.notion.so/395351e608834420b937b82dda729f0d" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">=== 下半部分表示需要合并的版本(希望合并的分支).</span></span></p></div><div id="https://www.notion.so/b0dd7db8d622423581a91ac12db9f2a6" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">解决冲突后(删除 &lt;&lt;&lt; / === / &gt;&gt;&gt;), 使用 </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">git add</code></span><span class="SemanticString"> 来将其标记为冲突已解决.</span></span></p></div></li><li id="https://www.notion.so/69caaaf5a4fb4042bb0df3e3e895773f" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">.gitignore</span></span><div id="https://www.notion.so/3c2a043e84e54dae94361d6b3c911f25" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString"></span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://github.com/github/gitignore">https://github.com/github/gitignore</a></span></span></p></div></li><li id="https://www.notion.so/29bafdfb9f374424b63e2a5bc9113d56" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">submodule</span></span><pre id="https://www.notion.so/c164926a612c4219b3911a1abde370d7" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span>git submodule add &lt;repository-url&gt; # 添加子模块
+git config submodule.&lt;repository&gt;.url &lt;url&gt; # 设置子模块 url
+git log --submodule # 查看子模块相关的提交记录
+git submodule sync --recursive # 修改 .gitmodule 的子模块 url 后, 同步配置到子模块内的 remote 上</span></span></span></code></pre><div id="https://www.notion.so/0c620be537a84cb8a848d4b1aecefbeb" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString"></span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">clone 包含子模块的仓库流程</strong></span></span></p></div><pre id="https://www.notion.so/ed526cdec72d4d3597cd9e77ecd2fef8" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span># 方式1
+git clone &lt;repository-url&gt; # clone 父项目
+cd &lt;submodule-name&gt; # 进入子模块目录, ls 后发现为空
+git submodule init # 初始化子模块仓库
+git submodule update # 拉取父项目中的合适的提交
+# 方式2
+git submodule update --init # 初始化并更新子模块
+git submodule update --init --recursive # 递归更新子模块内的子模块
+# 方式3
+git clone --recurse-submodules &lt;repository-url&gt; # clone 父项目的同时自动初始化并更新子模块</span></span></span></code></pre><div id="https://www.notion.so/d17fe2e4dd254130b47083e4e63bd53f" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString"></span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">更新仓库内的子模块</strong></span></span></p></div><pre id="https://www.notion.so/e8fa2aad409f428d82dd34ba2252ddd0" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span># 方式 1
+cd &lt;submodule&gt; # 进入子模块
+git pull # 拉取更新
+git diff --submodule # 查看子模块更新的 commit
+
+git pull --recurse-submodules # 拉取更新(包括子模块内的子模块)
+# 方式 2
+git submodule update --remote &lt;submodule&gt; # 更新子模块
+
+git config --global diff.submodule log # 设置 git diff 默认行为</span></span></span></code></pre><div id="https://www.notion.so/212a7b446b42472d821dcbb7d0be6d4e" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString"></span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">删除仓库内的子模块</strong></span></span></p></div><ul class="BulletedListWrapper"><li id="https://www.notion.so/1c5f45ac074340438ef562d8496502d9" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">Delete the relevant section from the </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">.gitmodules</code></span><span class="SemanticString"> file.</span></span></li><li id="https://www.notion.so/3dc531426bf24b6e984079a98f8d555b" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">Stage the </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">.gitmodules</code></span><span class="SemanticString"> changes:</span></span><div id="https://www.notion.so/107c104583b54b8f9539f8448137a974" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">git add .gitmodules</code></span></span></p></div></li><li id="https://www.notion.so/94f945cbd5d34c00b5b1523796fa458d" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">Delete the relevant section from </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">.git/config</code></span><span class="SemanticString">.</span></span></li><li id="https://www.notion.so/ca65cb13596d49af9a9cdfe0eafc48b1" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">Remove the submodule files from the working tree and index:</span></span><div id="https://www.notion.so/d3a481c4638b4773b203fd4b6caff6c6" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">git rm --cached path_to_submodule</code></span><span class="SemanticString"> (no trailing slash).</span></span></p></div></li><li id="https://www.notion.so/67c9c3512b50441e96fe115f09cd19cb" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">Remove the submodule&#x27;s </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">.git</code></span><span class="SemanticString"> directory:</span></span><div id="https://www.notion.so/0663d6db90314e39b77ab305dd3a4427" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">rm -rf .git/modules/path_to_submodule</code></span></span></p></div></li><li id="https://www.notion.so/ab6262bb0b72461e8b1b071b08e3956c" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">Commit the changes:</span></span><div id="https://www.notion.so/09322dfe59834c1cb339ff1955fcbb43" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">git commit -m &quot;Removed submodule &quot;</code></span></span></p></div></li><li id="https://www.notion.so/c969b781df4b4d248c4505cd21df8658" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">Delete the now untracked submodule files:</span></span><div id="https://www.notion.so/e4e87763735c40ee90f89461bcaef817" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">rm -rf path_to_submodule</code></span></span></p></div></li></ul></li></ul><div id="https://www.notion.so/d15a96a3c7404211a2ef4967a796c4c1" class="Divider"></div><h3 id="https://www.notion.so/a314369952314143942ebec1abcab2b8" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--3"><a class="Anchor" href="#https://www.notion.so/a314369952314143942ebec1abcab2b8"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">参考</span></span></h3><ul class="BulletedListWrapper"><li id="https://www.notion.so/b4da5843605a40e2ab1a30ad5b326daa" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://git-scm.com/book/en/v2">Pro Git</a></span></span></li></ul></article>
+  <script src="https://utteranc.es/client.js"
+        repo="cuiko/cuiko.github.io"
+        issue-term="og:title"
+        label="comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+  <footer class="Footer">
+  <div>&copy; cuiko’s blog 2023-2024</div>
+  <div>&centerdot;</div>
+  <div>Powered by <a href="https://github.com/dragonman225/notablog" target="_blank"
+      rel="noopener noreferrer">Notablog</a>.
+  </div>
+</footer>
+
+</body>
+
+</html>
